@@ -1,5 +1,33 @@
-Git is a distributed version conttrol system.
-Git is free software distributed under the GPL.
-Git has a mutable index called stage.
-Git tracks changes of files.
-Creating a new branch is quick and simple.
+mixed-port: 7890
+allow-lan: false
+log-level: info
+external-controller: 127.0.0.1:9090
+secret: ""
+ipv6: false
+proxies:
+  - name: qqsq01
+    type: vmess
+    server: qqsq01.herokuapp.com
+    port: "443"
+    uuid: da99842b-849f-4d63-bdae-da9b96519e35
+    alterId: "64"
+    cipher: auto
+    tls: true
+    network: ws
+    ws-path: ""
+  - name: trojan
+    type: trojan
+    server: www.qqsq01.xyz
+    port: 443
+    password: 123456
+    alpn:
+      - h2
+      - http/1.1
+proxy-groups:
+  - name: Proxy
+    proxies:
+      - qqsq01
+      - trojan
+    type: select
+rules:
+  - MATCH,DIRECT
